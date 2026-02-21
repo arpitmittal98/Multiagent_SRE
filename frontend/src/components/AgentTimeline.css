@@ -1,0 +1,199 @@
+.timeline {
+    padding: 28px;
+    animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.timeline__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.timeline__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.timeline__step-indicators {
+    display: flex;
+    gap: 8px;
+}
+
+.timeline__step-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    transition: all var(--transition-base);
+}
+
+.timeline__step-chip--active {
+    color: var(--text-primary);
+    border-color: var(--chip-color);
+    background: rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 12px var(--accent-blue-glow);
+}
+
+.timeline__step-chip--done {
+    color: var(--accent-green);
+    border-color: var(--accent-green);
+    background: var(--accent-green-glow);
+}
+
+.timeline__check {
+    font-weight: 700;
+}
+
+/* Messages */
+.timeline__messages {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.timeline-msg {
+    display: flex;
+    gap: 16px;
+    animation: slideInRight 0.4s ease-out both;
+}
+
+.timeline-msg__gutter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20px;
+    flex-shrink: 0;
+}
+
+.timeline-msg__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--step-color, var(--accent-blue));
+    flex-shrink: 0;
+    margin-top: 6px;
+    box-shadow: 0 0 8px var(--accent-blue-glow);
+}
+
+.timeline-msg__dot--pulse {
+    animation: glow-pulse 1.2s ease-in-out infinite;
+}
+
+.timeline-msg__line {
+    width: 2px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--step-color, var(--border-medium)), transparent);
+    min-height: 16px;
+}
+
+.timeline-msg__content {
+    flex: 1;
+    padding: 10px 16px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 10px;
+    transition: all var(--transition-fast);
+}
+
+.timeline-msg__content:hover {
+    border-color: var(--border-medium);
+}
+
+.timeline-msg__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.timeline-msg__step-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.timeline-msg__type-badge {
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    color: var(--accent-blue);
+    background: var(--accent-blue-glow);
+}
+
+.timeline-msg--result .timeline-msg__type-badge {
+    color: var(--accent-green);
+    background: var(--accent-green-glow);
+}
+
+.timeline-msg--progress .timeline-msg__type-badge {
+    color: var(--accent-amber);
+    background: var(--accent-amber-glow);
+}
+
+.timeline-msg--error .timeline-msg__type-badge {
+    color: var(--accent-red);
+    background: var(--accent-red-glow);
+}
+
+.timeline-msg__text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+.timeline-msg--result .timeline-msg__text {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Typing dots */
+.timeline__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    gap: 16px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.timeline__dots {
+    display: flex;
+    gap: 6px;
+}
+
+.timeline__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    animation: typing-dots 1.4s infinite;
+}
+
+.timeline__dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.timeline__dot:nth-child(3) {
+    animation-delay: 0.4s;
+}

@@ -1,0 +1,311 @@
+/* ── War Room Chat Component ────────────────────────────────── */
+
+.warroom {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 75vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.warroom::-webkit-scrollbar {
+    width: 6px;
+}
+
+.warroom::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+}
+
+/* ── Header Bar ───────────────────────────────────────────── */
+
+.warroom-header-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(20px);
+}
+
+.warroom-live-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    }
+
+    50% {
+        opacity: 0.7;
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    }
+}
+
+.warroom-agent-count {
+    margin-left: auto;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Messages Container ──────────────────────────────────── */
+
+.warroom-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+}
+
+/* ── System Messages ─────────────────────────────────────── */
+
+.warroom-system-msg {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.warroom-system-msg span {
+    display: inline-block;
+    padding: 6px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+/* ── Thinking Indicator ──────────────────────────────────── */
+
+.warroom-thinking {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.6;
+    animation: fade-in 0.3s ease;
+}
+
+.thinking-dots {
+    display: flex;
+    gap: 3px;
+}
+
+.thinking-dots span {
+    width: 5px;
+    height: 5px;
+    background: currentColor;
+    border-radius: 50%;
+    animation: bounce-dot 1.4s ease-in-out infinite;
+}
+
+.thinking-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.thinking-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce-dot {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ── Message Bubble ──────────────────────────────────────── */
+
+.warroom-bubble {
+    padding: 14px 18px;
+    border-radius: 12px;
+    animation: slide-in 0.4s ease;
+    transition: transform 0.2s ease;
+}
+
+.warroom-bubble:hover {
+    transform: translateX(4px);
+}
+
+.warroom-bubble.moderator {
+    border-left-width: 4px !important;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(120, 60, 200, 0.04)) !important;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.08);
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.6;
+    }
+}
+
+/* ── Bubble Header ───────────────────────────────────────── */
+
+.warroom-bubble-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.warroom-avatar {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.warroom-agent-name {
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+}
+
+.warroom-round-badge {
+    margin-left: auto;
+    padding: 2px 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.05em;
+}
+
+/* ── Bubble Content ──────────────────────────────────────── */
+
+.warroom-bubble-content {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.72);
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+.warroom-bubble-content.collapsed {
+    max-height: 4.8em;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.warroom-bubble-content p {
+    margin: 0 0 6px;
+}
+
+.warroom-bubble-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ── TL;DR Headline ──────────────────────────────────────── */
+
+.warroom-tldr {
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    letter-spacing: 0.01em;
+}
+
+/* ── Expand / Collapse Button ────────────────────────────── */
+
+.warroom-expand-btn {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 2px 0;
+    background: none;
+    border: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    letter-spacing: 0.03em;
+}
+
+.warroom-expand-btn:hover {
+    opacity: 1;
+}
+
+/* ── Empty State ─────────────────────────────────────────── */
+
+.warroom-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 300px;
+    text-align: center;
+    padding: 40px;
+}
+
+.warroom-empty-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.4;
+}
+
+.warroom-empty h3 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.warroom-empty p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.3);
+    max-width: 280px;
+}
