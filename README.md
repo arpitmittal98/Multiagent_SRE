@@ -14,23 +14,32 @@
 ## Architecture
 
 ```mermaid
-graph LR
-    A[🔍 Investigate<br/>Datadog MCP] --> B[🧠 Analyze<br/>Bedrock Claude 3.5]
-    B --> C[🔧 Remediate<br/>Strands Agent SDK]
-    C --> D[📰 Report<br/>Incident News]
-    D --> E[✅ END]
+graph TD
+    A[🔍 Investigate<br/>Datadog MCP] --> B1[🧠 Lead SRE Agent]
+    A --> B2[🔒 Security Agent]
+    A --> B3[🗄️ Database Agent]
+    B1 --> C[🤝 Consensus & TL;DR]
+    B2 --> C
+    B3 --> C
+    C --> D[🔧 Auto-Remediate<br/>Strands Agent SDK]
+    D --> E[📰 Report<br/>Incident News]
+    E --> F[✅ END]
 
     style A fill:#4C78A8,color:white
-    style B fill:#F58518,color:white
-    style C fill:#E45756,color:white
-    style D fill:#72B7B2,color:white
+    style B1 fill:#F58518,color:white
+    style B2 fill:#F58518,color:white
+    style B3 fill:#F58518,color:white
+    style C fill:#F58518,color:white
+    style D fill:#E45756,color:white
+    style E fill:#72B7B2,color:white
 ```
 
 | Step | Component | Technology |
 |------|-----------|------------|
 | Investigate | Datadog MCP Client | `httpx` → Datadog REST API |
-| Analyze | Root Cause Analysis | `boto3` → Amazon Bedrock (Claude 3.5 Sonnet) |
-| Remediate | Automated Fix Execution | `strands-agents` SDK with Lambda/Cache/ECS tools |
+| Analyze Debate | Specialized Personas | `boto3` → Amazon Bedrock (Claude 3.5 Sonnet) |
+| Consensus | Summarization | LangGraph Node Aggregation |
+| Remediate | Interactive Terminal Execution | `strands-agents` SDK with streaming UI logs |
 | Report | Incident News Report | Bedrock Claude (creative mode) |
 
 ---
