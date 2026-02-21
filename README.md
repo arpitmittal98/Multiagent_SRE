@@ -1,6 +1,13 @@
-# 🚨 SRE AI Agent
+# 🚨 Multi-Agent SRE War Room
 
-**An AI-powered Site Reliability Engineering agent** that investigates production errors, analyzes root causes, executes remediation, and generates journalistic incident reports — all orchestrated by a LangGraph state machine and fully traced by Datadog LLM Observability.
+**An AI-powered Site Reliability Engineering platform** that investigates production errors, analyzes root causes, executes auto-remediation, and generates journalistic incident reports — all orchestrated by a LangGraph state machine and fully traced by Datadog LLM Observability.
+
+### ✨ Key Features
+- **Multi-Agent Debate:** Specialized personas (Database Expert, Security, Lead SRE) analyze logs and formulate a consensus with TL;DR summaries.
+- **Auto-Remediation Terminal:** Execute Python/Bash scripts directly from the UI with live-streaming terminal output via the Strands Agent SDK.
+- **One-Click PDF Export:** Download auto-generated, blameless incident reports securely.
+- **Datadog LLM Dashboard:** Dedicated UI tab for real-time visibility into AI token costs, latency, and request spans.
+- **Premium Glassmorphism UI:** Built with Vite + React, featuring a highly readable "Dark Neon" aesthetic.
 
 ---
 
